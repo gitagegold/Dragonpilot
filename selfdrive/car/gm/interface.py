@@ -115,6 +115,18 @@ class CarInterface(CarInterfaceBase):
       ret.steerRatio = 15.3
       ret.steerRatioRear = 0.
       ret.centerToFront = ret.wheelbase * 0.49
+      
+    elif candidate == CAR.EQUINOX:
+      ret.minSteerSpeed = 2.78  # GM 스티어링 조작은 10km 이상부터 사용 가능하다.
+      ret.minEnableSpeed = -1
+      ret.mass = 3485. * CV.LB_TO_KG + STD_CARGO_KG
+      ret.safetyModel = car.CarParams.SafetyModel.gm
+      ret.wheelbase = 2.72
+      ret.steerRatio = 16.5
+      ret.steerRatioRear = 0.
+      ret.centerToFront = ret.wheelbase * 0.4
+      tire_stiffness_factor = 0.444  # not optimized yet
+     
 
     # TODO: get actual value, for now starting with reasonable value for
     # civic and scaling by mass and wheelbase
